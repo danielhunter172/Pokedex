@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Pokedex} from "./Pokedex";
 
 export class Home extends Component {
   static displayName = Home.name;
@@ -6,7 +7,8 @@ export class Home extends Component {
   render () {
     return (
       <div>
-          Hello World
+        Hello World
+        <Pokedex/>
       </div>
     );
   }
