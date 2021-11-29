@@ -6,18 +6,18 @@ using Newtonsoft.Json.Linq;
 
 namespace Application.Pokedex.Queries
 {
-    public class GetPokemonQuery
+    public class GetPokemonByIdQuery
     {
         public HttpClient _http;
 
-        public GetPokemonQuery(HttpClient http)
+        public GetPokemonByIdQuery(HttpClient http)
         {
             _http = http;
         }
         
         public async Task<List<Pokemon>> Get()
         {
-            var response = await _http.GetAsync("https://pokeapi.co/api/v2/pokemon?limit=100&offset=0");
+            var response = await _http.GetAsync("https://pokeapi.co/api/v2/pokemon/");
             var content = await response.Content.ReadAsStringAsync();
             var json = JObject.Parse(content);
 
