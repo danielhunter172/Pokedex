@@ -12,8 +12,6 @@ export class Pokedex extends Component {
     async getPokedex () {
         let response = await fetch('https://localhost:7062/api/Pokedex');
         let json = await response.json();
-        console.log(response);
-        console.log(json);
         this.setState({ pokedex: json });
     }
     
