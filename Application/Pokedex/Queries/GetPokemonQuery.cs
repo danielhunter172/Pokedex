@@ -17,7 +17,7 @@ namespace Application.Pokedex.Queries
         
         public async Task<List<Pokemon>> Get()
         {
-            var response = await _http.GetAsync("https://pokeapi.co/api/v2/pokemon?limit=100&offset=0");
+            var response = await _http.GetAsync("https://pokeapi.co/api/v2/pokemon?limit=898&offset=0");
             var content = await response.Content.ReadAsStringAsync();
             var json = JObject.Parse(content);
 
