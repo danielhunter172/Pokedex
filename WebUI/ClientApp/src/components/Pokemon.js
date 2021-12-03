@@ -58,10 +58,10 @@ export class Pokemon extends Component {
                 </div>
                 <div className="card-body">
                     <div className="row">
-                        <div className="col-3">
+                        <div className="col-2">
                             <img src={this.state.pokemon.sprite}/>
                         </div>
-                        <div className="col-9">
+                        <div className="col-10">
                             {this.state.pokemon.description}
                         </div>
                     </div>
