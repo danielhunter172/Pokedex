@@ -14,6 +14,7 @@ namespace Domain.Models
         public string? location_area_encounters { get; set; }
         public List<Stat>? stats { get; set; }
         public List<string>? abilities { get; set; }
+        public List<string>? types { get; set; }
         public List<string>? moves { get; set; }
         public string? sprite { get; set; }
         public List<string>? egg_groups { get; set; }

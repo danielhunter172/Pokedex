@@ -44,6 +44,7 @@ namespace Application.Pokedex.Queries
                 
                 stats = new List<Stat>(),
                 abilities = new List<string>(),
+                types = new List<string>(),
                 moves = new List<string>(),
                 egg_groups = new List<string>()
             };
@@ -60,6 +61,11 @@ namespace Application.Pokedex.Queries
             foreach (var ability in jsonPoke["abilities"])
             {
                 pokemon.abilities.Add(ability["ability"]["name"].ToString());
+            }
+
+            foreach (var type in jsonPoke["types"])
+            {
+                pokemon.types.Add(type["type"]["name"].ToString());
             }
 
             foreach (var move in jsonPoke["moves"])
