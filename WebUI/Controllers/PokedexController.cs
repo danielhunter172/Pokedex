@@ -22,16 +22,24 @@ namespace WebUI.Controllers
     {
         private readonly HttpClient _http;
         private GetPokemonQuery _query;
+        private GetPokemonByIdQuery _idQuery;
         public PokedexController()
         {
             _http = new HttpClient();
             _query = new GetPokemonQuery(_http);
+            _idQuery = new GetPokemonByIdQuery(_http);
         }
         
         [HttpGet]
         public async Task<List<Pokemon>> GetPokedex()
         {
            return await _query.Get();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<PokemonDetailed> GetPokemon(int id)
+        {
+            return await _idQuery.Get(id);
         }
     }
 }
