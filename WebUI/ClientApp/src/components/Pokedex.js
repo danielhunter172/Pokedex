@@ -5,7 +5,10 @@ import {Pokemon} from "./Pokemon";
 export class Pokedex extends Component {
     constructor(props) {
         super(props);
-        this.state = { pokedex: [] }
+        this.state = { 
+            pokedex: [],
+            selectedId: 1
+        }
     }
     static displayName = Pokedex.name;
     
@@ -18,6 +21,13 @@ export class Pokedex extends Component {
     componentWillMount() {
         this.pokedex = this.getPokedex();
     }
+    
+    changeSelectedPokemon(id) {
+        if (id !== this.state.selectedId)
+        {
+            this.setState({ selectedId: id });
+        }
+    }
 
     render () {
         return (
@@ -27,8 +37,10 @@ export class Pokedex extends Component {
                         <ul className="list-group">
                             {this.state.pokedex.map(pokemon =>
                                 <li className="list-group-item">
-                                    <img src={pokemon.imageLink}/>
-                                    {pokemon.id}. {pokemon.name}
+                                    <button onClick={() => this.changeSelectedPokemon(pokemon.id)}>
+                                        <img src={pokemon.imageLink}/>
+                                        {pokemon.id}. {pokemon.name}
+                                    </button>
                                 </li>
                             )}
                         </ul>
@@ -38,7 +50,7 @@ export class Pokedex extends Component {
                     <div className="row">
                         <div className="col-12">
                             <div className="card card-body bg-light mt-5">
-                                <Pokemon/>
+                                <Pokemon id={this.state.selectedId}/>
                             </div>
                         </div>
                     </div>
