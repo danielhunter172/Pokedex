@@ -14,7 +14,7 @@ namespace Domain.Models
         public Stat[] stats { get; set; }
         public string[] abilities { get; set; }
         public string[] moves { get; set; }
-        public string[] sprites { get; set; }
+        public string sprite { get; set; }
         public string[] egg_groups { get; set; }
         public string description { get; set; }
         public string growth_rate { get; set; }
