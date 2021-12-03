@@ -36,12 +36,12 @@ export class Pokedex extends Component {
         
         return (
             <div className="row">
-                <div className="col-4">
+                <div className="offset-1 col-3">
                     <div className="scroll card card-body bg-light mt-5">
                         <ul className="list-group">
                             {this.state.pokedex.map(pokemon =>
                                 <li className="list-group-item">
-                                    <button onClick={() => this.changeSelectedPokemon(pokemon.id)}>
+                                    <button onClick={() => this.changeSelectedPokemon(pokemon.id)} style={{width: '100%'}}>
                                         <img src={pokemon.imageLink}/>
                                         {pokemon.id}. {pokemon.name}
                                     </button>
