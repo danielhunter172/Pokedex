@@ -40,7 +40,6 @@ export class Pokemon extends Component {
 
     render() {
         const {pokemon} = this.state;
-        
         return pokemon.id === undefined ? <span>Loading...</span> : (
             <div>
                 <div className="card-header">
@@ -58,7 +57,35 @@ export class Pokemon extends Component {
                     </div>
                 </div>
                 <div className="card-body">
-                    <img src={this.state.pokemon.sprite}/>
+                    <div className="row">
+                        <div className="col-3">
+                            <img src={this.state.pokemon.sprite}/>
+                        </div>
+                        <div className="col-9">
+                            {this.state.pokemon.description}
+                        </div>
+                    </div>
+                    <div>
+                        {this.state.pokemon["stats"].map(stat => 
+                            <div className="row">
+                                <div className="col-2">
+                                    <span className="float-end" key={stat}>
+                                        {stat.name
+                                            .split("-")
+                                            .map(word => word[0]
+                                                .toUpperCase() + word.substring(1))
+                                            .join(" ")}
+                                    </span>
+                                </div>
+                                <div className="col-10">
+                                    <div className="progress">
+                                        <div className="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0"
+                                             aria-valuemax="100" style={{width: `${(stat.base_stat / 255) * 100}%`}}>{stat.base_stat}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
         )        

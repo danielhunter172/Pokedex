@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Domain.Models;
@@ -39,7 +40,6 @@ namespace Application.Pokedex.Queries
                 sprite = jsonPoke["sprites"]["front_default"].ToString(),
 
                 capture_rate = jsonSpec["capture_rate"].ToObject<int>(),
-                description = jsonSpec["flavor_text_entries"][0]["flavor_text"].ToString(),
                 growth_rate = jsonSpec["growth_rate"]["name"].ToString(),
                 
                 stats = new List<Stat>(),
@@ -48,6 +48,17 @@ namespace Application.Pokedex.Queries
                 moves = new List<string>(),
                 egg_groups = new List<string>()
             };
+
+            jsonSpec["flavor_text_entries"].Any(x =>
+            {
+                if (x["language"]["name"].ToString() == "en" && x["version"]["name"].ToString() == "alpha-sapphire")
+                {
+                    pokemon.description = x["flavor_text"].ToString();
+                    return true;
+                }
+
+                return false;
+            });
             
             foreach (var stat in jsonPoke["stats"])
             {
