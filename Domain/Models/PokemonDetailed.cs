@@ -9,8 +9,8 @@ namespace Domain.Models
         public string? name { get; set; }
         public int? capture_rate { get; set; }
         public int? base_experience { get; set; }
-        public int? height { get; set; }
-        public int? weight { get; set; }
+        public float? height { get; set; }
+        public float? weight { get; set; }
         public string? location_area_encounters { get; set; }
         public List<Stat>? stats { get; set; }
         public List<string>? abilities { get; set; }

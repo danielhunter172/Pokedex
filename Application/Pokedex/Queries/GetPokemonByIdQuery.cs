@@ -34,8 +34,8 @@ namespace Application.Pokedex.Queries
                 id = jsonPoke["id"].ToObject<long>(),
                 name = jsonPoke["name"].ToString(),
                 base_experience = jsonPoke["base_experience"].ToObject<int>(),
-                height = jsonPoke["height"].ToObject<int>(),
-                weight = jsonPoke["weight"].ToObject<int>(),
+                height = jsonPoke["height"].ToObject<float>() / 10f,
+                weight = jsonPoke["weight"].ToObject<float>() / 10f,
                 location_area_encounters = jsonPoke["location_area_encounters"].ToString(),
                 sprite = jsonPoke["sprites"]["front_default"].ToString(),
 
