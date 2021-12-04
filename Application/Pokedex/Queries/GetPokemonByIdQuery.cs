@@ -41,6 +41,7 @@ namespace Application.Pokedex.Queries
 
                 capture_rate = jsonSpec["capture_rate"].ToObject<int>(),
                 growth_rate = jsonSpec["growth_rate"]["name"].ToString(),
+                gender_rate = jsonSpec["gender_rate"].ToObject<float>() * 12.5f,
                 
                 stats = new List<Stat>(),
                 abilities = new List<string>(),

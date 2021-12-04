@@ -8,6 +8,7 @@ namespace Domain.Models
         public long id { get; set; }
         public string? name { get; set; }
         public int? capture_rate { get; set; }
+        public float? gender_rate { get; set; }
         public int? base_experience { get; set; }
         public float? height { get; set; }
         public float? weight { get; set; }
