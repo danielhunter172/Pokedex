@@ -43,7 +43,7 @@ export class Pokedex extends Component {
                                 <li className="list-group-item">
                                     <button onClick={() => this.changeSelectedPokemon(pokemon.id)} style={{width: '100%'}}>
                                         <img src={pokemon.imageLink}/>
-                                        {pokemon.id}. {pokemon.name}
+                                        {pokemon.id}. {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}
                                     </button>
                                 </li>
                             )}
