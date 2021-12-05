@@ -52,7 +52,7 @@ namespace Application.Pokedex.Queries
 
             jsonSpec["flavor_text_entries"].Any(x =>
             {
-                if (x["language"]["name"].ToString() == "en" && x["version"]["name"].ToString() == "alpha-sapphire")
+                if (x["language"]["name"].ToString() == "en" && (x["version"]["name"].ToString() == "shield" || x["version"]["name"].ToString() == "omega-ruby"))
                 {
                     pokemon.description = x["flavor_text"].ToString();
                     return true;
