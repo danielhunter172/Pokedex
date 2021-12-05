@@ -40,11 +40,12 @@ export class Pokemon extends Component {
 
     render() {
         const {pokemon} = this.state;
+        console.log(pokemon.gender_rate);
         return pokemon.id === undefined ? <span>Loading...</span> : (
             <div>
                 <div className="card-header">
-                    {this.state.pokemon.id}. {this.state.pokemon.name}
-                    <div className="float-end">{this.state.pokemon["types"].map(type => 
+                    {pokemon.id}. {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}
+                    <div className="float-end">{pokemon["types"].map(type => 
                         <span key={type} 
                               className="badge badge-pill mr-1" 
                               style={{
@@ -59,19 +60,18 @@ export class Pokemon extends Component {
                 <div className="card-body">
                     <div className="row">
                         <div className="col-2">
-                            <img src={this.state.pokemon.sprite}/>
+                            <img src={pokemon.sprite}/>
                         </div>
                         <div className="col-10">
-                            {this.state.pokemon.description}
+                            {pokemon.description}
                         </div>
                     </div>
                     <div>
-                        {this.state.pokemon["stats"].map(stat => 
+                        {pokemon.stats.map(stat => 
                             <div className="row">
                                 <div className="col-2">
                                     <span className="float-end" key={stat}>
-                                        {stat.name
-                                            .split("-")
+                                        {stat.name.split("-")
                                             .map(word => word[0]
                                                 .toUpperCase() + word.substring(1))
                                             .join(" ")}
@@ -85,6 +85,122 @@ export class Pokemon extends Component {
                                 </div>
                             </div>
                         )}
+                    </div>
+                    <div className="row">
+                        <h3 className="text-center">Profile</h3>
+                        <div className="col-6">
+                            <div className="row">
+                                <div className="col-6">
+                                    <h6 className="float-end">Height:</h6>
+                                </div>
+                                <div className="col-6">
+                                    <h6 className="float-start">{pokemon.height}m</h6>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-6">
+                                    <h6 className="float-end">Weight:</h6>
+                                </div>
+                                <div className="col-6">
+                                    <h6 className="float-start">{pokemon.weight}kg</h6>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-6">
+                                    <h6 className="float-end">Catch Rate:</h6>
+                                </div>
+                                <div className="col-6">
+                                    <h6 className="float-start">{pokemon.capture_rate}</h6>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-6">
+                                    <h6 className="float-end">Growth Rate:</h6>
+                                </div>
+                                <div className="col-6">
+                                    <h6 className="float-start">
+                                        {pokemon.growth_rate
+                                            .split("-")
+                                            .map(word => word[0]
+                                                .toUpperCase() + word.substring(1))
+                                            .join(" ")}
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-6">
+                            <div className="row">
+                                <div className="col-6">
+                                    <h6 className="float-end">Egg Groups:</h6>
+                                </div>
+                                <div className="col-6">
+                                    <h6 className="float-start">
+                                        {pokemon.egg_groups.map(group => 
+                                            group
+                                                .toLowerCase()
+                                                .split(' ')
+                                                .map(s => s[0].toUpperCase() + s.substring(1))
+                                                .join(' '))
+                                            .join(', ')}
+                                    </h6>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-6">
+                                    <h6 className="float-end">Ablilities:</h6>
+                                </div>
+                                <div className="col-6">
+                                    <h6 className="float-start">
+                                        {pokemon.abilities.map(group =>
+                                            group
+                                                .toLowerCase()
+                                                .split('-')
+                                                .map(s => s[0].toUpperCase() + s.substring(1))
+                                                .join(' '))
+                                            .join(', ')}
+                                    </h6>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-6">
+                                    <h6 className="float-end">Base Experience:</h6>
+                                </div>
+                                <div className="col-6">
+                                    <h6 className="float-start">{pokemon.base_experience}</h6>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-6">
+                                    <h6 className="float-end">Gender Ratio</h6>
+                                </div>
+                                <div className="col-6">
+                                    <div className="progress">
+                                        <div className="progress-bar"
+                                             role="progressbar"
+                                             style={{
+                                                 width: `${pokemon.gender_rate}%`,
+                                                 backgroundColor: '#c2185b'
+                                             }}
+                                             aria-valuenow="25"
+                                             aria-valuemin="0"
+                                             aria-valuemax="100">
+                                            <small>{pokemon.gender_rate}%</small>
+                                        </div>
+                                        <div className="progress-bar"
+                                                   role="progressbar"
+                                                   style={{
+                                                       width: `${100 - pokemon.gender_rate}%`,
+                                                       backgroundColor: '#1976d2'
+                                                   }}
+                                                   aria-valuenow="25"
+                                                   aria-valuemin="0"
+                                                   aria-valuemax="100">
+                                        <small>{100 - pokemon.gender_rate}%</small>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
