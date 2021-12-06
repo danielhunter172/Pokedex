@@ -35,8 +35,6 @@ export class Pokedex extends Component {
     }
 
     render () {
-        
-        
         return (
             <div className="row">
                 <div className="offset-1 col-3">
