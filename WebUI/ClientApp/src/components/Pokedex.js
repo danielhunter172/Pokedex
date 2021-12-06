@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Pokedex.css'
 import {Pokemon} from "./Pokemon";
+import {PokemonList} from "./PokemonList";
 
 export class Pokedex extends Component {
     constructor(props) {
@@ -9,6 +10,8 @@ export class Pokedex extends Component {
             pokedex: [],
             selectedId: 0
         }
+        
+        this.changeSelectedPokemon = this.changeSelectedPokemon.bind(this);
     }
     static displayName = Pokedex.name;
     pokemonDiv = <div></div>;
@@ -37,18 +40,7 @@ export class Pokedex extends Component {
         return (
             <div className="row">
                 <div className="offset-1 col-3">
-                    <div className="scroll card card-body bg-light mt-5">
-                        <ul className="list-group">
-                            {this.state.pokedex.map(pokemon =>
-                                <li className="list-group-item">
-                                    <button onClick={() => this.changeSelectedPokemon(pokemon.id)} style={{width: '100%'}}>
-                                        <img src={pokemon.imageLink}/>
-                                        {pokemon.id}. {pokemon.name[0].toUpperCase() + pokemon.name.substring(1)}
-                                    </button>
-                                </li>
-                            )}
-                        </ul>
-                    </div>
+                    <PokemonList handleClick={this.changeSelectedPokemon}/>
                 </div>
                 <div className="col-6">
                     <div className="row">
