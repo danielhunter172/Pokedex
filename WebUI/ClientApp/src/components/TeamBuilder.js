@@ -10,6 +10,7 @@ export class TeamBuilder extends Component {
         this.addToTeam = this.addToTeam.bind(this);
         this.removeFromTeam = this.removeFromTeam.bind(this);
         this.selectPokemon = this.selectPokemon.bind(this);
+        this.selectMove = this.selectMove.bind(this);
         
         this.state = { 
             team: [],
@@ -79,6 +80,63 @@ export class TeamBuilder extends Component {
         this.setState({ selectedSlot: jsonSlot });
     }
 
+    async selectMove(newMove, moveSlot){
+        let move;
+
+        switch (moveSlot){
+            case 1:
+                move = {
+                    id: this.state.selectedSlot.id,
+                    move1: newMove,
+                    move2: this.state.selectedSlot.move2,
+                    move3: this.state.selectedSlot.move3,
+                    move4: this.state.selectedSlot.move4,
+                }
+                break;
+            case 2:
+                move = {
+                    id: this.state.selectedSlot.id,
+                    move1: this.state.selectedSlot.move1,
+                    move2: newMove,
+                    move3: this.state.selectedSlot.move3,
+                    move4: this.state.selectedSlot.move4,
+                }
+                break;
+            case 3:
+                move = {
+                    id: this.state.selectedSlot.id,
+                    move1: this.state.selectedSlot.move1,
+                    move2: this.state.selectedSlot.move2,
+                    move3: newMove,
+                    move4: this.state.selectedSlot.move4,
+                }
+                break;
+            case 4:
+                move = {
+                    id: this.state.selectedSlot.id,
+                    move1: this.state.selectedSlot.move1,
+                    move2: this.state.selectedSlot.move2,
+                    move3: this.state.selectedSlot.move3,
+                    move4: newMove,
+                }
+                break
+            default:
+                break;
+        }
+
+        let put = await fetch('https://localhost:7062/api/TeamBuilder/' + this.state.selectedSlot.id, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            body: JSON.stringify(move)
+        });
+        
+        let a = this.selectPokemon(this.state.selectedSlot.pokemonId, this.state.selectedSlot.id)
+    }
+
     render () {
         return (
             <div className="row">
@@ -90,7 +148,7 @@ export class TeamBuilder extends Component {
                         <div className="col-12">
                             <div className="card bg-light mt-5">
                                 <Team team={this.state.team} select={this.selectPokemon} delete={this.removeFromTeam}/>
-                                <PokemonMoves pokemon={this.state.selectedPokemon} slot={this.state.selectedSlot}/>
+                                <PokemonMoves pokemon={this.state.selectedPokemon} slot={this.state.selectedSlot} selectMove={this.selectMove}/>
                             </div>
                         </div>
                     </div>

@@ -24,7 +24,8 @@ const TYPE_COLORS = {
 export class PokemonMoves extends Component {
     constructor(props) {
         super(props);
-
+        
+        this.state = { moves: {} }
     }
     
     render() {
@@ -45,7 +46,7 @@ export class PokemonMoves extends Component {
                                     </button>
                                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                         {this.props.pokemon.moves.map(move => 
-                                            <li><span className="dropdown-item" onClick={() => console.log('click')}>{move}</span></li>
+                                            <li><span className="dropdown-item" onClick={() => this.props.selectMove(move, 1)}>{move}</span></li>
                                         )}                                        
                                     </ul>
                                 </div>
@@ -64,7 +65,7 @@ export class PokemonMoves extends Component {
                                     </button>
                                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                         {this.props.pokemon.moves.map(move =>
-                                            <li><span className="dropdown-item" onClick={() => console.log('click')}>{move}</span></li>
+                                            <li><span className="dropdown-item" onClick={() => this.props.selectMove(move, 2)}>{move}</span></li>
                                         )}
                                     </ul>
                                 </div>
@@ -86,7 +87,7 @@ export class PokemonMoves extends Component {
                                     </button>
                                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                         {this.props.pokemon.moves.map(move =>
-                                            <li><span className="dropdown-item" onClick={() => console.log('click')}>{move}</span></li>
+                                            <li><span className="dropdown-item" onClick={() => this.props.selectMove(move, 3)}>{move}</span></li>
                                         )}
                                     </ul>
                                 </div>
@@ -105,7 +106,7 @@ export class PokemonMoves extends Component {
                                     </button>
                                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                         {this.props.pokemon.moves.map(move =>
-                                            <li><span className="dropdown-item" onClick={() => console.log('click')}>{move}</span></li>
+                                            <li><span className="dropdown-item" onClick={() => this.props.selectMove(move, 4)}>{move}</span></li>
                                         )}
                                     </ul>
                                 </div>

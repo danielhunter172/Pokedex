@@ -63,5 +63,29 @@ namespace WebUI.Controllers
             
             return NoContent();
         }
+        
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutMove(int id, TeamPokemon teamPokemon)
+        {
+            if (id != teamPokemon.Id)
+            {
+                return BadRequest();
+            }
+
+            var pokemon = await _context.PokemonTeam.FindAsync(id);
+            if (pokemon == null)
+            {
+                return NotFound();
+            }
+
+            pokemon.Move1 = teamPokemon.Move1;
+            pokemon.Move2 = teamPokemon.Move2; 
+            pokemon.Move3 = teamPokemon.Move3; 
+            pokemon.Move4 = teamPokemon.Move4; 
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }
