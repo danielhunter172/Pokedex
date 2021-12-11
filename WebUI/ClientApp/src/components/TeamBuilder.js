@@ -1,6 +1,7 @@
 ﻿import React, {Component} from "react";
 import {PokemonList} from "./PokemonList";
 import {Team} from "./Team";
+import {PokemonMoves} from "./PokemonMoves";
 
 export class TeamBuilder extends Component {
     constructor(props) {
@@ -8,8 +9,13 @@ export class TeamBuilder extends Component {
 
         this.addToTeam = this.addToTeam.bind(this);
         this.removeFromTeam = this.removeFromTeam.bind(this);
+        this.selectPokemon = this.selectPokemon.bind(this);
         
-        this.state = { team: [] };
+        this.state = { 
+            team: [],
+            selectedPokemon: {},
+            selectedSlot: {}
+        };
     }
      
     async getTeam(){
@@ -23,7 +29,6 @@ export class TeamBuilder extends Component {
         let a = this.getTeam();
     }   
     
-
     async addToTeam(selectedId) {
         console.log(this.state.team.length)
         if (this.state.team.length < 6){
@@ -63,6 +68,16 @@ export class TeamBuilder extends Component {
         });
         let a = this.getTeam();
     }
+    
+    async selectPokemon(id, slotId){
+        this.setState({ selectedPokemon: {} });
+        let response = await fetch('https://localhost:7062/api/Pokedex/' + id);
+        let json = await response.json();
+        this.setState({ selectedPokemon: json });
+        let responseSlot = await fetch('https://localhost:7062/api/TeamBuilder/' + slotId);
+        let jsonSlot = await responseSlot.json();
+        this.setState({ selectedSlot: jsonSlot });
+    }
 
     render () {
         return (
@@ -74,7 +89,8 @@ export class TeamBuilder extends Component {
                     <div className="row">
                         <div className="col-12">
                             <div className="card bg-light mt-5">
-                                <Team team={this.state.team} delete={this.removeFromTeam}/>
+                                <Team team={this.state.team} select={this.selectPokemon} delete={this.removeFromTeam}/>
+                                <PokemonMoves pokemon={this.state.selectedPokemon} slot={this.state.selectedSlot}/>
                             </div>
                         </div>
                     </div>
