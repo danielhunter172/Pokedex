@@ -28,113 +28,48 @@ export class Team extends Component {
         
         this.state = { selectedPokemon: [] }
     }
-    
-    async getPokemon (id) {
-        if (id !== this.state.selectedPokemon.ID) {
-            let response = await fetch('https://localhost:7062/api/Pokedex/' + this.props.id);
-            let json = await response.json();
-            this.setState({ selectedPokemon: json });            
-        }
-    }
-    
-    render() {        
+
+    render() {
         return (
             <div>
                 <div className="row">
                     <div className="row">
                         <div className="col-4">
-                            <div className="card card-body bg-light">
+                            <div className="card card-body bg-light" onClick={() => this.props.select(this.props.team[0].pokemonId, this.props.team[0].id)}>
                                 <TeamPokemonIcon pokemon={this.props.team[0]} delete={this.props.delete}/>
                             </div>
                         </div>
                         <div className="col-4">
-                            <div className="card card-body bg-light">
+                            <div className="card card-body bg-light" onClick={() => this.props.select(this.props.team[1].pokemonId, this.props.team[1].id)}>
                                 <TeamPokemonIcon pokemon={this.props.team[1]} delete={this.props.delete}/>
                             </div>
                         </div>
                         <div className="col-4">
-                            <div className="card card-body bg-light">
+                            <div className="card card-body bg-light" onClick={() => this.props.select(this.props.team[2].pokemonId, this.props.team[2].id)}>
                                 <TeamPokemonIcon pokemon={this.props.team[2]} delete={this.props.delete}/>
                             </div>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-4">
-                            <div className="card card-body bg-light">
+                            <div className="card card-body bg-light" onClick={() => this.props.select(this.props.team[3].pokemonId, this.props.team[3].id)}>
                                 <TeamPokemonIcon pokemon={this.props.team[3]} delete={this.props.delete}/>
                             </div>
                         </div>
                         <div className="col-4">
-                            <div className="card card-body bg-light">
+                            <div className="card card-body bg-light" onClick={() => this.props.select(this.props.team[4].pokemonId, this.props.team[4].id)}>
                                 <TeamPokemonIcon pokemon={this.props.team[4]} delete={this.props.delete}/>
                             </div>
                         </div>
                         <div className="col-4">
-                            <div className="card card-body bg-light">
+                            <div className="card card-body bg-light" onClick={() => this.props.select(this.props.team[5].pokemonId, this.props.team[5].id)}>
                                 <TeamPokemonIcon pokemon={this.props.team[5]} delete={this.props.delete}/>
                             </div>
                         </div>
                     </div>
                 </div>
                 <hr className="border"/>
-                <div className="row">
-                    <h3 className="text-center">Moves</h3>
-                    <hr className="border"/>
-                    <div className="row">
-                        <div className="offset-1 col-4">
-                            <div className="card bg-light">
-                                <div className="card-header">
-                                    Move 1
-                                </div>
-                                <div className="card-body">
-                                    <div className="dropdown">
-                                        <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Dropdown button
-                                        </button>
-                                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <li><span className="dropdown-item" onClick={() => console.log('click')}>Action</span></li>
-                                            <li><span className="dropdown-item" href="#">Another action</span></li>
-                                            <li><span className="dropdown-item" href="#">Something else here</span></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="offset-2 col-4">
-                            <div className="card bg-light">
-                                <div className="card-header">
-                                    Move 2
-                                </div>
-                                <div className="card-body">
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr className="border"/>
-                    <div className="row">
-                        <div className="offset-1 col-4">
-                            <div className="card bg-light">
-                                <div className="card-header">
-                                    Move 3
-                                </div>
-                                <div className="card-body">
-
-                                </div>
-                            </div>
-                        </div>
-                        <div className="offset-2 col-4">
-                            <div className="card bg-light">
-                                <div className="card-header">
-                                    Move 4
-                                </div>
-                                <div className="card-body">
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         )
     }
