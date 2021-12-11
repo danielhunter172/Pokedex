@@ -7,7 +7,7 @@ import {TypeChart} from "./TypeChart";
 export class TeamBuilder extends Component {
     constructor(props) {
         super(props);
-
+        
         this.addToTeam = this.addToTeam.bind(this);
         this.removeFromTeam = this.removeFromTeam.bind(this);
         this.selectPokemon = this.selectPokemon.bind(this);
