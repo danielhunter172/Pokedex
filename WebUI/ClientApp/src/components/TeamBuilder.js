@@ -2,6 +2,7 @@
 import {PokemonList} from "./PokemonList";
 import {Team} from "./Team";
 import {PokemonMoves} from "./PokemonMoves";
+import {TypeChart} from "./TypeChart";
 
 export class TeamBuilder extends Component {
     constructor(props) {
@@ -143,12 +144,14 @@ export class TeamBuilder extends Component {
                 <div className="offset-1 col-3">
                     <PokemonList handleClick={this.addToTeam}/>
                 </div>
-                <div className="col-6">
+                <div className="col-7">
                     <div className="row">
                         <div className="col-12">
                             <div className="card bg-light mt-5">
                                 <Team team={this.state.team} select={this.selectPokemon} delete={this.removeFromTeam}/>
                                 <PokemonMoves pokemon={this.state.selectedPokemon} slot={this.state.selectedSlot} selectMove={this.selectMove}/>
+                                <hr className="border"/>
+                                <TypeChart team={this.state.team}/>
                             </div>
                         </div>
                     </div>
