@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import './PokemonMoves.css'
 
 const TYPE_COLORS = {
     bug: 'B1C12E',
@@ -44,7 +45,7 @@ export class PokemonMoves extends Component {
                                     <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                         {this.props.slot.move1}
                                     </button>
-                                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <ul className="dropdown-menu scrollable" aria-labelledby="dropdownMenuButton1">
                                         {this.props.pokemon.moves.map(move => 
                                             <li><span className="dropdown-item" onClick={() => this.props.selectMove(move, 1)}>{move}</span></li>
                                         )}                                        
@@ -63,7 +64,7 @@ export class PokemonMoves extends Component {
                                     <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                         {this.props.slot.move2}
                                     </button>
-                                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <ul className="dropdown-menu scrollable" aria-labelledby="dropdownMenuButton1">
                                         {this.props.pokemon.moves.map(move =>
                                             <li><span className="dropdown-item" onClick={() => this.props.selectMove(move, 2)}>{move}</span></li>
                                         )}
@@ -85,7 +86,7 @@ export class PokemonMoves extends Component {
                                     <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                         {this.props.slot.move3}
                                     </button>
-                                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <ul className="dropdown-menu scrollable" aria-labelledby="dropdownMenuButton1">
                                         {this.props.pokemon.moves.map(move =>
                                             <li><span className="dropdown-item" onClick={() => this.props.selectMove(move, 3)}>{move}</span></li>
                                         )}
@@ -104,7 +105,7 @@ export class PokemonMoves extends Component {
                                     <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                         {this.props.slot.move4}
                                     </button>
-                                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <ul className="dropdown-menu scrollable" aria-labelledby="dropdownMenuButton1">
                                         {this.props.pokemon.moves.map(move =>
                                             <li><span className="dropdown-item" onClick={() => this.props.selectMove(move, 4)}>{move}</span></li>
                                         )}
