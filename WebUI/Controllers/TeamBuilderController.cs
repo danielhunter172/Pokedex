@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Domain.Models;
@@ -28,9 +30,25 @@ namespace WebUI.Controllers
         public async Task<ActionResult<TeamPokemon>> PostPokemon(TeamPokemon pokemon)
         {
             _context.Add(pokemon);
+            
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetTeam), new {id = pokemon.Id}, pokemon);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePokemon(int id)
+        {
+            var pokemon = await _context.PokemonTeam.FindAsync(id);
+            if (pokemon == null)
+            {
+                return NotFound();
+            }
+
+            _context.PokemonTeam.Remove(pokemon);
+            await _context.SaveChangesAsync();
+            
+            return NoContent();
         }
     }
 }
