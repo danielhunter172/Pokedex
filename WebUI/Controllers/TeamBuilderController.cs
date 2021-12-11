@@ -25,6 +25,19 @@ namespace WebUI.Controllers
         {
             return await _context.PokemonTeam.ToListAsync();
         }
+        
+        [HttpGet("{id}")]                                                                                                         
+        public async Task<ActionResult<TeamPokemon>> GetTeamById(int id)
+        {
+            var pokemon = await _context.PokemonTeam.FindAsync(id);
+
+            if (pokemon == null)
+            {
+                return NotFound();
+            }
+            
+            return pokemon;                                                              
+        }                                                                                                                 
 
         [HttpPost]
         public async Task<ActionResult<TeamPokemon>> PostPokemon(TeamPokemon pokemon)
