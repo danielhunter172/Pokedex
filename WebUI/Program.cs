@@ -1,6 +1,8 @@
+using Domain.Models;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -10,6 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddMediatR(typeof(StartupBase));
+builder.Services.AddDbContext<TeamContext>(opt =>
+    opt.UseSqlServer("Data Source=DANIEL;Initial Catalog=Pokemon;Integrated Security=True"));
 
 var app = builder.Build();
 
