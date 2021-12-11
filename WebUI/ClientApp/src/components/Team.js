@@ -1,4 +1,5 @@
 ﻿import React, {Component} from "react";
+import {TeamPokemonIcon} from "./TeamPokemonIcon";
 
 const TYPE_COLORS = {
     bug: 'B1C12E',
@@ -36,61 +37,41 @@ export class Team extends Component {
         }
     }
     
-    render() {
-        return(
+    render() {        
+        return (
             <div>
                 <div className="row">
                     <div className="row">
                         <div className="col-4">
                             <div className="card card-body bg-light">
-                                <div className="row">
-                                    <div className="col-7">
-                                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" width="96" height="96"/>
-                                    </div>
-                                    <div className="col-4">
-                                    <span className="badge badge-pill mr-1"
-                                          style={{
-                                              backgroundColor: `#${TYPE_COLORS['fire']}`,
-                                              color: 'white'
-                                          }}>
-                                    FIRE                        
-                                    </span>
-                                        <span className="badge badge-pill mr-1"
-                                              style={{
-                                                  backgroundColor: `#${TYPE_COLORS['flying']}`,
-                                                  color: 'white'
-                                              }}>
-                                    FLYING                        
-                                    </span>
-                                    </div>
-                                </div>
+                                <TeamPokemonIcon pokemon={this.props.team[0]} delete={this.props.delete}/>
                             </div>
                         </div>
                         <div className="col-4">
                             <div className="card card-body bg-light">
-                                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/436.png" width="96" height="96"/>
+                                <TeamPokemonIcon pokemon={this.props.team[1]} delete={this.props.delete}/>
                             </div>
                         </div>
                         <div className="col-4">
                             <div className="card card-body bg-light">
-                                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/17.png" width="96" height="96"/>
+                                <TeamPokemonIcon pokemon={this.props.team[2]} delete={this.props.delete}/>
                             </div>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-4">
                             <div className="card card-body bg-light">
-                                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/683.png" width="96" height="96"/>
+                                <TeamPokemonIcon pokemon={this.props.team[3]} delete={this.props.delete}/>
                             </div>
                         </div>
                         <div className="col-4">
                             <div className="card card-body bg-light">
-                                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/206.png" width="96" height="96"/>
+                                <TeamPokemonIcon pokemon={this.props.team[4]} delete={this.props.delete}/>
                             </div>
                         </div>
                         <div className="col-4">
                             <div className="card card-body bg-light">
-                                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/345.png" width="96" height="96"/>
+                                <TeamPokemonIcon pokemon={this.props.team[5]} delete={this.props.delete}/>
                             </div>
                         </div>
                     </div>
