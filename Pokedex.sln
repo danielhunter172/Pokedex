@@ -6,8 +6,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{3B44D211-3AE5-4D1C-B217-518E36BB8681}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUI Blazor", "WebUI Blazor\WebUI Blazor.csproj", "{F447313A-0AC1-4712-A7CA-72621BED7888}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,9 +24,5 @@ Global
 		{3B44D211-3AE5-4D1C-B217-518E36BB8681}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B44D211-3AE5-4D1C-B217-518E36BB8681}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B44D211-3AE5-4D1C-B217-518E36BB8681}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F447313A-0AC1-4712-A7CA-72621BED7888}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F447313A-0AC1-4712-A7CA-72621BED7888}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F447313A-0AC1-4712-A7CA-72621BED7888}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F447313A-0AC1-4712-A7CA-72621BED7888}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
